@@ -10,18 +10,65 @@
 
     <title>Hello, world!</title>
   </head>
-  <body>
+  <body onload="studentList()">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Student Data</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Student List <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="new-student.html">New Student</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          Assignment 4 - Delinda & Riris
+        </span>
+      </div>
+    </nav>
     <div class="container">
-        <h2>Input</h2>
+      <div class="row mt-3 mb-3 pt-3 pb-3">
+        <div class="col">
+          <h3>Student List</h3>
+          <!-- <button class="btn btn-light" onclick="studentList()">Refresh</button> -->
+          <table class="table" id="student-list">
+            <thead class="thead-dark">
+              <tr class="text-center">
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Age</th>
+                <th scope="col">Birthdate</th>
+                <th scope="col">Hobby</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
         
+        
+      </div>
 
-        <h2>Modify</h2>
+      
 
-        <h2>Output</h2>
     </div>
     
 
+    <!-- <script src="datepicker.js"></script> -->
     <script src="main.js"></script>
+    
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
