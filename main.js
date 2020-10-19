@@ -75,11 +75,6 @@ students[1].addHobby('drawing')
 students[1].addHobby('eating')
 students[1].addHobby('sleeping')
 
-let Delin = new Student ('Delinda', '24', '20 Juni', 'female', 'id123');
-Delin.addHobby('reading')
-Delin.addHobby('eating')
-Delin.addHobby('sleeping')
-
 // const addHobbyField = () => {
 //     let hobbyList = document.querySelector('#hobbyList');
 //     let hobbyItem = document.createElement('div');
