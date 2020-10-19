@@ -10,7 +10,7 @@
 
     <title>Hello, world!</title>
   </head>
-  <body onload="studentList()">
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Student Data</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +22,7 @@
             <a class="nav-link" href="#">Student List <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="new-student.html">New Student</a>
+            <a class="nav-link" href="#new-student">New Student</a>
           </li>
         </ul>
         <span class="navbar-text">
@@ -30,14 +30,151 @@
         </span>
       </div>
     </nav>
+
+    
+
     <div class="container">
       <div class="row mt-3 mb-3 pt-3 pb-3">
         <div class="col">
-          <h3>Student List</h3>
-          <!-- <button class="btn btn-light" onclick="studentList()">Refresh</button> -->
-          <table class="table" id="student-list">
+          <div class="alert alert-success d-none" role="alert" id="changeSuccess">
+            Change Saved
+          </div>
+          <div class="row">
+            <div class="col">
+              <h3>Student List</h3>
+            </div>
+            <div class="col">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#new-student">
+                New Student
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="new-student" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Input New Student</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row mt-3 mb-3 pt-3 pb-3" id="">
+                        <div class="col">
+                          <form>
+                            <!-- id -->
+                            <div class="form-group row" id="div-id">
+                              <label class="col-sm-2 col-form-label">ID</label>
+                              <div class="col-sm">
+                                <div class="row">
+                                  <div class="col">
+                                    <input type="text" class="form-control" id="inputID">
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="alert alert-danger mt-1 d-none" role="alert" id="warningID"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- name -->
+                            <div class="form-group row" id="div-name">
+                              <label class="col-sm-2 col-form-label">Name</label>
+                              <div class="col-sm">
+                                <div class="row">
+                                  <div class="col">
+                                    <input type="text" class="form-control" id="inputName">
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="alert alert-danger mt-1 d-none" role="alert" id="warningName"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- birth date -->
+                            <div class="form-group row" id="div-bdate">
+                              <label class="col-sm-2 col-form-label">Birthdate</label>
+                              <div class="col">
+                                <div class="row">
+                                  <div class="col-sm-3">
+                                    <select id="inputYear" onchange="printMonth()" class="form-control">
+                                      <option selected value="">Year</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-sm-3">
+                                    <select id="inputMonth" onchange="printDate()" class="form-control">
+                                      <option selected value="">Month</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-sm-3">
+                                    <select id="inputDate" class="form-control">
+                                      <option selected value="">Date</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="alert alert-danger mt-1 d-none" role="alert" id="warningBdate">Must be filled.</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- gender -->
+                            <div class="form-group row" id="div-gender">
+                              <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                              <div class="col-sm-10">
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="gender" id="inputGender1" value="male" checked>
+                                  <label class="form-check-label" for="inputGender1">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="gender" id="inputGender2" value="female">
+                                  <label class="form-check-label" for="inputGender2">Female</label>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- hobby -->
+                            <div class="form-group row" id="div-hobby">
+                              <legend class="col-form-label col-sm-2 pt-0">Hobby</legend>
+                
+                              <div class="col">
+                
+                                <div class="row">
+                                  <div class="col-sm" id="hobbyList">
+                                    <input type="text" class="form-control" id="hobbyItem">
+                                  </div>
+                                </div>
+                
+                                <!-- <div class="row">
+                                  <div class="col">
+                                    <button type="button" class="btn btn-primary" onclick="addHobbyField()">+</button>
+                                  </div>
+                                </div> -->
+                
+                              </div>
+                              
+                            </div>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" onclick="dataSubmit()">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <table class="table text-center" id="student-list">
             <thead class="thead-dark">
-              <tr class="text-center">
+              <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Gender</th>
@@ -48,25 +185,152 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr> -->
             </tbody>
           </table>
+
+          <!-- Button trigger modal -->
+          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Launch demo modal
+          </button> -->
+
+          <!-- Modal-edit -->
+          <div class="modal fade" id="edit-menu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body d-flex flex-column">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#set-name" onclick="hideMenu()">Change Name</button><br>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#set-age" onclick="hideMenu()">Change Age</button><br>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#set-gender" onclick="hideMenu()">Change Gender</button><br>
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#add-hobby" onclick="hideMenu(); showHobbies()">Add Hobby</button><br>
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#remove-hobby" onclick="hideMenu(); showHobbies()">Remove Hobby</button><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal-setName -->
+          <div class="modal fade" id="set-name" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Change Name</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <input type="text" class="form-control" id="inputNewName">
+                  <div class="alert alert-danger mt-1 d-none" role="alert" id="warningNewName">Must be filled.</div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" onclick="changeName()">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal-setAge -->
+          <div class="modal fade" id="set-age" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Change Age</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <input type="text" class="form-control" id="inputNewAge">
+                  <div class="alert alert-danger mt-1 d-none" role="alert" id="warningNewAge">Must be filled.</div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" onclick="changeAge()">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal-setGender -->
+          <div class="modal fade" id="set-gender" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Change Gender</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="newGender" id="inputGender1" value="male" checked>
+                    <label class="form-check-label" for="inputGender1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="newGender" id="inputGender2" value="female">
+                    <label class="form-check-label" for="inputGender2">Female</label>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" onclick="changeGender()">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal-addHobby -->
+          <div class="modal fade" id="add-hobby" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Add Hobby</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <input type="text" class="form-control" id="inputNewHobby">
+                  <div class="alert alert-danger mt-1 d-none" role="alert" id="warningNewHobby">Must be filled.</div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary"  onclick="addHobby()">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal-removeHobby -->
+          <div class="modal fade" id="remove-hobby" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Remove Hobby</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <span id="hobbiesDisplay"></span>
+                  <input type="text" class="form-control" id="inputRemoveHobby">
+                  <div class="alert alert-danger mt-1 d-none" role="alert" id="warningRemoveHobby1">Must be filled.</div>
+                  <div class="alert alert-danger mt-1 d-none" role="alert" id="warningRemoveHobby2">Data does not exist.</div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary"  onclick="removeHobby()">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </div>
-        
-        
       </div>
-
       
-
+     
     </div>
     
 
-    <!-- <script src="datepicker.js"></script> -->
+    <script src="datepicker.js"></script>
     <script src="main.js"></script>
     
     <!-- Optional JavaScript; choose one of the two! -->
